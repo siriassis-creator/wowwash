@@ -1,0 +1,29 @@
+// ลบ import './App.css' เก่าออก (ถ้าไฟล์ CSS นั้นทำให้หน้าตาเพี้ยน)
+// แล้วใช้โครงสร้างนี้แทน
+
+import React, { useEffect, useState } from 'react';
+// ... (import อื่นๆ ตามที่เคยให้ไป)
+
+const App: React.FC = () => {
+  // ... (Logic การดัก ?page=status หรือ ?page=booking)
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50 font-sans w-full">
+      {/* 
+         ใช้ Tailwind CSS ในการคุม Layout แทนการใช้ ID (#center) 
+         เพราะระบบที่เราทำเน้นความคลีนแบบ Modern Admin 
+      */}
+      <nav className="bg-emerald-800 text-white shadow-md z-20 w-full sticky top-0">
+        {/* ส่วน Navigation Bar */}
+      </nav>
+
+      <main className="flex-1 w-full overflow-y-auto flex flex-col relative">
+        {/* ส่วนแสดงเนื้อหาตามเมนูที่เลือก */}
+        {activeMenu === 'dashboard' && <Dashboard />}
+        {activeMenu === 'queue' && <Queue />}
+        {activeMenu === 'settings' && <Settings />}
+        {/* ... */}
+      </main>
+    </div>
+  );
+};
